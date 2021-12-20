@@ -27,7 +27,7 @@ class _UserGuilderScreenState extends State<UserGuilderScreen> {
           backgroundColor: const Color.fromRGBO(78, 159, 193, 1),
           title: const Text("BÁO CÁO SỨC KHOẺ HÀNG NGÀY"),
           automaticallyImplyLeading: true,
-          
+
 
           actions: <Widget>[
             IconButton(
