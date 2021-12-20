@@ -15,7 +15,6 @@ class User {
   Province? province;
   String? username;
   String? password;
-  DateTime? lastLogin;
   String? email;
   String? phone;
   String? identityId;
@@ -37,7 +36,6 @@ class User {
       this.province,
       this.username,
       this.password,
-      this.lastLogin,
       this.email,
       this.phone,
       this.identityId,
@@ -61,7 +59,6 @@ class User {
       province: Province.fromJson(json['village']["district"]['province']),
       username: json['username'] as String?,
       password: json['password'] as String?,
-      lastLogin: json['lastLogin'] != null ? DateTime?.parse(json["lastLogin"]) : json['lastLogin'] as DateTime?,
       email: json['email'] as String?,
       phone: json['phone'] as String?,
       identityId: json['identityCard'] as String?,
@@ -70,7 +67,9 @@ class User {
       lastname: json["lastname"] as String?,
       address: json["address"] as String?,
       gender: json["gender"] as String?,
-      dateOfBirth: json["dateOfBirth"] != null ? DateTime?.parse(json["dateOfBirth"]) : json['dateOfBirth'] as DateTime?,
+      dateOfBirth: json["dateOfBirth"] != null
+          ? DateTime?.parse(json["dateOfBirth"])
+          : json['dateOfBirth'] as DateTime?,
       avatar: json["avatar"] as String?,
       isActive: json['isActive'] as int?,
       isOnline: json['isOnline'] as int?);

@@ -39,7 +39,7 @@ class UserRepository {
       print('api get user online recieved!');
       responseJson = jsonDecode(utf8.decode(response.bodyBytes));
       User _currentUser = User.fromJson(responseJson);
-      return _currentUser ;
+      return _currentUser;
     } on SocketException {
       print('No net');
       throw FetchDataException('No Internet connection');
@@ -66,7 +66,6 @@ class UserRepository {
     }
   }
 
-
   List<User>? parseUser(String responseBody) {
     final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
     return parsed.map<User>((json) => User.fromJson(json)).toList();
@@ -81,28 +80,27 @@ class UserRepository {
     var responseJson;
     try {
       final response =
-      await http.post(Uri.parse(Api.authUrl + "/v1/api/user/update"),
-          headers: {
-            "content-type": "application/json",
-            'Authorization': 'Bearer $token',
-          },
-          body: json.encode({
-            "userId": user.userId,
-            "username": user.username,
-            "mail": user.email,
-            "phone": user.phone,
-            "identityCard": user.identityId,
-            "lastLogin": f.format(DateTime.now()),
-            "firstname": user.firstname,
-            "lastname": user.lastname,
-            "surname": user.surname,
-            "avatar": user.avatar,
-            "gender": user.gender,
-            "address": user.address,
-            "dob": fDob.format(user.dateOfBirth!),
-            "isOnline": 0,
-            "isActive": user.isActive
-          }));
+          await http.post(Uri.parse(Api.authUrl + "/v1/api/user/update"),
+              headers: {
+                "content-type": "application/json",
+                'Authorization': 'Bearer $token',
+              },
+              body: json.encode({
+                "userId": user.userId,
+                "username": user.username,
+                "mail": user.email,
+                "phone": user.phone,
+                "identityCard": user.identityId,
+                "firstname": user.firstname,
+                "lastname": user.lastname,
+                "surname": user.surname,
+                "avatar": user.avatar,
+                "gender": user.gender,
+                "address": user.address,
+                "dob": fDob.format(user.dateOfBirth!),
+                "isOnline": 0,
+                "isActive": user.isActive
+              }));
       responseJson = json.encode(utf8.decode(response.bodyBytes));
     } on SocketException {
       print('No net');
@@ -131,7 +129,6 @@ class UserRepository {
                 "mail": user.email,
                 "phone": user.phone,
                 "identityCard": user.identityId,
-                "lastLogin": f.format(DateTime.now()),
                 "firstname": user.firstname,
                 "lastname": user.lastname,
                 "surname": user.surname,
@@ -150,6 +147,7 @@ class UserRepository {
     print('api post.');
     return responseJson;
   }
+
   Future<String> updateUser(User user) async {
     print('Api Post, url /v1/api/user/update');
     final f = new DateFormat('yyyy-MM-dd hh:mm:ss');
@@ -158,28 +156,27 @@ class UserRepository {
     var responseJson;
     try {
       final response =
-      await http.post(Uri.parse(Api.authUrl + "/v1/api/user/update"),
-          headers: {
-            "content-type": "application/json",
-            'Authorization': 'Bearer $token',
-          },
-          body: json.encode({
-            "userId": user.userId,
-            "username": user.username,
-            "mail": user.email,
-            "phone": user.phone,
-            "firstname": user.firstname,
-            "lastLogin": f.format(user.lastLogin!),
-            "lastname": user.lastname,
-            "surname": user.surname,
-            "identityCard": user.identityId,
-            "dob": fDob.format(user.dateOfBirth!),
-            "address": user.address,
-            "gender": user.gender,
-            "avatar": user.avatar,
-            "isOnline": user.isOnline,
-            "isActive": user.isActive
-          }));
+          await http.post(Uri.parse(Api.authUrl + "/v1/api/user/update"),
+              headers: {
+                "content-type": "application/json",
+                'Authorization': 'Bearer $token',
+              },
+              body: json.encode({
+                "userId": user.userId,
+                "username": user.username,
+                "mail": user.email,
+                "phone": user.phone,
+                "firstname": user.firstname,
+                "lastname": user.lastname,
+                "surname": user.surname,
+                "identityCard": user.identityId,
+                "dob": fDob.format(user.dateOfBirth!),
+                "address": user.address,
+                "gender": user.gender,
+                "avatar": user.avatar,
+                "isOnline": user.isOnline,
+                "isActive": user.isActive
+              }));
       responseJson = json.encode(utf8.decode(response.bodyBytes));
     } on SocketException {
       print('No net');
@@ -220,7 +217,9 @@ class UserRepository {
     var responseJson;
     try {
       final response = await http.get(
-        Uri.parse(Api.authUrl + "/v1/api/patient-doctor/get-doctor?patientId="+user.userId.toString()),
+        Uri.parse(Api.authUrl +
+            "/v1/api/patient-doctor/get-doctor?patientId=" +
+            user.userId.toString()),
         headers: {
           "content-type": "application/json",
           'Authorization': 'Bearer $token',
@@ -302,8 +301,6 @@ class UserRepository {
     print('api post.');
     return responseJson;
   }
-
-
 
   Future<String> resetPassword(ResetPassword password, String token) async {
     print('Api Post, url /v1/api/user/reset-password/$token');
