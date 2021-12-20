@@ -82,12 +82,6 @@ class User {
   }
 
   String getDisplayName() {
-    if (firstname != null &&
-        lastname != null &&
-        firstname!.isNotEmpty &&
-        lastname!.isNotEmpty) {
-      return lastname.toString() + " ${surname ?? ""} " + firstname.toString();
-    }
-    return username.toString();
+      return ((lastname != null && lastname!.isNotEmpty) ? lastname.toString() : "") + " ${surname ?? ""} " + ((lastname != null && lastname!.isNotEmpty) ? firstname.toString() :"");
   }
 }

@@ -58,84 +58,52 @@ class _ReportScreenState extends State<ReportScreen> {
           child: ListView(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(children: [
-                  Text("Nồng độ Oxy",
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: SizedBox(
-                        width: 160,
-                        height: 40,
-                        child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            validator: MultiValidator([
-                              RequiredValidator(
-                                  errorText: "Vui lòng nhập nồng độ oxi"),
-                              RangeValidator(
-                                  min: 85,
-                                  max: 200,
-                                  errorText: "Vui lòng nhập nồng đọ oxi hợp lệ")
-                            ]),
-                            controller: TextEditingController(
-                                text: _textOxygenController.text),
-                            onChanged: (val) {
-                              _textOxygenController.text = val;
-                              reportDTO.oxygen = val;
-                              // if (_textOxygenController.text.length > 0) {
-                              //   _continue = true;
-                              //   firedA();
-                              // } else {
-                              //   _continue = false;
-                              //   firedA();
-                              // }
-                            },
-                            style:
-                                TextStyle(fontSize: 14, color: Colors.black))),
-                  )
-                ]),
+                padding: const EdgeInsets.all(15.0),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  validator: MultiValidator([
+                    RequiredValidator(errorText: "Vui lòng nhập nồng độ oxi"),
+                    RangeValidator(
+                        min: 85,
+                        max: 200,
+                        errorText: "Vui lòng nhập nồng đọ oxi hợp lệ")
+                  ]),
+                  controller:
+                  TextEditingController(text: _textOxygenController.text),
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
+                  decoration: const InputDecoration(
+                      labelText: "Nồng độ Oxy:",
+                      // labelStyle: TextStyle(fontSize: 18)
+                  ),
+                  onChanged: (val) {
+                    _textOxygenController.text = val;
+                    reportDTO.oxygen = val;
+                  },
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(children: [
-                  Text("Nhiệt độ",
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: SizedBox(
-                        width: 200,
-                        height: 40,
-                        child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            validator: MultiValidator([
-                              RequiredValidator(
-                                  errorText: "Vui lòng nhập nhiệt độ"),
-                              RangeValidator(
-                                  min: 35,
-                                  max: 42,
-                                  errorText: "Vui lòng nhập nhiệt độ hợp lệ")
-                            ]),
-
-                            // text: _textOxygenController(text: reportDTO.temperate),
-                            controller: TextEditingController(
-                                text: _textTemperatureController.text),
-                            onChanged: (val) {
-                              _textTemperatureController.text = val;
-                              reportDTO.temperate = val;
-                              // if (_textTemperatureController.text.length > 0) {
-                              //   _continue = true;
-                              //   firedA();
-                              // } else {
-                              //   _continue = false;
-                              //   firedA();
-                              // }
-                            },
-                            style:
-                                TextStyle(fontSize: 14, color: Colors.black))),
-                  )
-                ]),
+                padding: const EdgeInsets.all(15.0),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  validator: MultiValidator([
+                    RequiredValidator(errorText: "Vui lòng nhập nhiệt độ"),
+                    RangeValidator(
+                        min: 35,
+                        max: 42,
+                        errorText: "Vui lòng nhập nhiệt độ hợp lệ")
+                  ]),
+                  controller: TextEditingController(
+                      text: _textTemperatureController.text),
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
+                  decoration: const InputDecoration(
+                      labelText: "Nhiệt độ:",
+                      // labelStyle: TextStyle(fontSize: 18)
+                  ),
+                  onChanged: (val) {
+                    _textTemperatureController.text = val;
+                    reportDTO.temperate = val;
+                  },
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.all(20.10),

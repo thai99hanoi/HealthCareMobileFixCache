@@ -338,7 +338,7 @@ class _homeScreenState extends State<homeScreen> {
           Padding(
             padding: const EdgeInsets.fromLTRB(18, 10, 18, 10),
             child: Container(
-              height: 600,
+              height: 1000,
               width: 200,
               decoration: BoxDecoration(
                   color: Color.fromRGBO(78, 159, 193, 0.3),
@@ -348,7 +348,7 @@ class _homeScreenState extends State<homeScreen> {
                     // _isLoading
                     //     ? Center(child: CircularProgressIndicator())
                     // :
-                    SfPdfViewer.asset('assets/files/huong-dan.pdf'),
+                    Container(child: SfPdfViewer.asset('assets/files/huong-dan.pdf')),
               ),
             ),
           ),

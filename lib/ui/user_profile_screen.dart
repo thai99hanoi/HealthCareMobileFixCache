@@ -37,11 +37,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   _UserProfileScreenState() {
     UserRepository().getCurrentUserWithoutCache().then((val) => setState(() {
           _profile = val;
-        }));
-    UserRepository().getCurrentUser().then((val) => setState(() {
-          _profile = val;
           _profileAva = val;
         }));
+    // UserRepository().getCurrentUser().then((val) => setState(() {
+    //       _profile = val;
+    //       _profileAva = val;
+    //     }));
   }
   DateTime? _selectedDate;
   TextEditingController _textDOBController = TextEditingController();
