@@ -30,8 +30,8 @@ class _State extends State<LoginPage> {
     }
   }
 
-  var _userNameErr = "Username is invalid!";
-  var _passNameErr = "Password must more than 6 characters";
+  var _userNameErr = "Tên đăng nhập không hợp lệ";
+  var _passNameErr = "Mật khẩu phải có ít nhất 8 ký tự";
   var _userInvalid = false;
   var _passInvalid = false;
 

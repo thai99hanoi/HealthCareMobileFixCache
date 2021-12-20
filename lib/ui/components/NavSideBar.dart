@@ -143,14 +143,14 @@ class _NavDrawer extends State<NavDrawer> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(
-          'An Error Occurs',
+          'Thông báo',
           style: TextStyle(color: Colors.blue),
         ),
         content: Text(message),
         actions: <Widget>[
           // ignore: deprecated_member_use
           FlatButton(
-            child: Text('Okay'),
+            child: Text('Xác nhận'),
             onPressed: () {
               Navigator.of(context).pop();
             },

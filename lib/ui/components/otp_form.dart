@@ -191,7 +191,7 @@ class _OtpFormState extends State<OtpForm> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(
-          'An Error Occurs',
+          'Thông báo',
           style: TextStyle(color: Colors.blue),
         ),
         content: Text(message),

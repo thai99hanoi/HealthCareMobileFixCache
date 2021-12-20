@@ -198,7 +198,7 @@ class _NextScreenReportState extends State<NextScreenReport> {
         actions: <Widget>[
           // ignore: deprecated_member_use
           FlatButton(
-            child: Text('Ok'),
+            child: Text('Xác nhận'),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -223,7 +223,7 @@ class _NextScreenReportState extends State<NextScreenReport> {
 showAlertDialog(BuildContext context) {
   // set up the button
   Widget okButton = FlatButton(
-    child: Text("OK"),
+    child: Text("Xác nhận"),
     onPressed: () {
       Navigator.push(
         context,

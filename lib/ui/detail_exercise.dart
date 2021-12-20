@@ -49,6 +49,8 @@ class _DetailScreenExcerciseState extends State<DetailScreenExcercise> {
         body: ListView(
           children: [
             Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
                     child: Padding(
@@ -58,20 +60,21 @@ class _DetailScreenExcerciseState extends State<DetailScreenExcercise> {
                         fontWeight: FontWeight.w500,
                         fontSize: 25,
                       )),
-                )),
-                Padding(
-                  padding: const EdgeInsets.all(10.10),
-                  child: Container(
-                    alignment: AlignmentDirectional.center,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Image.network(
-                        Api.imageUrl + ex.thumbnail.toString(),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
                 ),
+
+                ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.10),
+                    child: Text(ex.description.toString(),
+                        style: TextStyle(
+
+                          fontSize: 18,
+                        )),
+                  ),
+
+                ),
+
               ],
             ),
 
@@ -94,48 +97,36 @@ class _DetailScreenExcerciseState extends State<DetailScreenExcercise> {
                   if (exDetail.isEmpty) {
                     return Center(child: CircularProgressIndicator());
                   } else {
-                    if (exDetail[index].imageDescription != null) {
-                      return Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Text(exDetail[index].description.toString()),
-                      );
-                    } else {
-                      return Container(
-                          child: Align(
-                              alignment: Alignment.center,
-                              child: Column(children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Image.network(
-                                      Api.imageUrl +
-                                          exDetail[index]
-                                              .imageDescription
-                                              .toString(),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Text(
-                                      exDetail[index].description.toString()),
-                                ),
-                              ])));
-                    }
+                   return  Column(
+                     mainAxisAlignment: MainAxisAlignment.start,
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        exDetail[index].imageDescription != null
+                        ? Image.network(
+                          Api.imageUrl +
+                              exDetail[index]
+                                  .imageDescription
+                                  .toString(),
+                          fit: BoxFit.cover,
+                        )
+                        : SizedBox(height: 0,),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                              exDetail[index].description.toString()),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                              exDetail[index].detail.toString()),
+                        ),
+                      ],
+                    );
+
+
                   }
                 })
-            // Padding(
-            //   padding: const EdgeInsets.all(20.0),
-            //   child: Align(
-            //     alignment: Alignment.centerLeft,
-            //     child: Text(ex.description.toString(),
-            //         style: TextStyle(
-            //           fontSize: 16,
-            //         )),
-            //   ),
-            // ),
+
           ],
         ),
       );

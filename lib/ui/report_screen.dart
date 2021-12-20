@@ -250,14 +250,14 @@ class _ReportScreenState extends State<ReportScreen> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(
-          'An Error Occurs',
+          'Thông báo',
           style: TextStyle(color: Colors.blue),
         ),
         content: Text(message),
         actions: <Widget>[
           // ignore: deprecated_member_use
           FlatButton(
-            child: Text('Okay'),
+            child: Text('Xác nhận'),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -271,7 +271,7 @@ class _ReportScreenState extends State<ReportScreen> {
 showAlertDialog(BuildContext context) {
   // set up the button
   Widget okButton = FlatButton(
-    child: Text("OK"),
+    child: Text("Xác nhận"),
     onPressed: () {
       Navigator.push(
         context,
