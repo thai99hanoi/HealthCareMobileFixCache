@@ -28,6 +28,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   User _profile = new User();
   String? _selectedGender;
   User _profileAva = new User();
+  bool _uploaded = false;
   var _image;
   List<String?> nameList = [];
   List<String> _gender = ["Nam", "Nữ"];
@@ -111,7 +112,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         String base64Image = base64String(image!.path, _image);
                         print(_image);
                         _profileAva.avatar = base64Image;
-                        Image.memory(_image);
+
                         var _respone =
                             await UserRepository().updateUser(_profileAva);
                         print(_respone);
@@ -131,6 +132,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                 FlatButton(
                                   child: Text('Xác nhận'),
                                   onPressed: () {
+                                    updateUI();
                                     Navigator.pop(context);
                                   },
                                 )
@@ -449,6 +451,13 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         _showerrorDialog("Xảy ra lỗi");
       } else {}
     }
+  }
+
+  void updateUI() {
+    UserRepository().getCurrentUserWithoutCache().then((val) => setState(() {
+          _profile = val;
+          _image = null;
+        }));
   }
 
   _selectDate(BuildContext context) async {
