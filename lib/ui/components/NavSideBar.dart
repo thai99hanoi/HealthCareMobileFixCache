@@ -8,6 +8,7 @@ import 'package:heath_care/ui/change_password.dart';
 import 'package:heath_care/ui/login_screen.dart';
 import 'package:heath_care/ui/send_request.dart';
 import 'package:heath_care/ui/user_guilder.dart';
+import 'package:heath_care/ui/my_request.dart';
 import 'package:provider/provider.dart';
 
 class NavDrawer extends StatefulWidget {
@@ -88,6 +89,16 @@ class _NavDrawer extends State<NavDrawer> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => SendRequest()),
+              )
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.info_outline),
+            title: Text('Yêu cầu của tôi'),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyRequestScreen()),
               )
             },
           ),

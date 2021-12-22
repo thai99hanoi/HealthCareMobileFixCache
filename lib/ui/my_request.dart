@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:heath_care/model/request.dart';
 import 'package:heath_care/repository/request_repository.dart';
-import 'package:intl/intl.dart';
 
-class GetAllRequestScreen extends StatefulWidget {
-  const GetAllRequestScreen({Key? key}) : super(key: key);
+class MyRequestScreen extends StatefulWidget {
+  const MyRequestScreen({Key? key}) : super(key: key);
 
   @override
-  _GetAllRequestScreenState createState() => _GetAllRequestScreenState();
+  _MyRequestScreenState createState() => _MyRequestScreenState();
 }
 
-class _GetAllRequestScreenState extends State<GetAllRequestScreen> {
-  final df = new DateFormat('dd-MM-yyyy');
-  List<Request> _requestList = [];
-
+class _MyRequestScreenState extends State<MyRequestScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +18,7 @@ class _GetAllRequestScreenState extends State<GetAllRequestScreen> {
           title: Text("DANH SÁCH YÊU CẦU"),
         ),
         body: FutureBuilder<List<Request>?>(
-            future: RequestRepository().getAllRequest(),
+            future: RequestRepository().getRequestByUser(),
             builder: (context, requestAllSnapshot) {
               if (requestAllSnapshot.hasData) {
                 return ListView.builder(
@@ -139,7 +135,7 @@ class _GetAllRequestScreenState extends State<GetAllRequestScreen> {
                     });
               } else {
                 return Center(
-                  child: Text("Chưa có yêu cầu đặc biệt!"),
+                  child: Text("Bạn chưa có yêu cầu nào!"),
                 );
               }
             }));
