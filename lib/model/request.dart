@@ -8,6 +8,7 @@ class Request {
   String? description;
   String? note;
   int? status;
+  DateTime? date;
 
   Request(
       {this.id,
@@ -15,7 +16,8 @@ class Request {
       this.requestType,
       this.description,
       this.note,
-      this.status});
+      this.status,
+      this.date});
 
   factory Request.fromJson(Map<String, dynamic> json) => Request(
         id: json['id'] as int?,
@@ -24,5 +26,8 @@ class Request {
         description: json['description'] as String?,
         note: json['note'] as String?,
         status: json['status'] as int?,
+        date: json["date"] != null
+            ? DateTime?.parse(json["date"])
+            : json['date'] as DateTime?,
       );
 }
