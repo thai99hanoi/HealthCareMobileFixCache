@@ -93,7 +93,7 @@ class _NavDrawer extends State<NavDrawer> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.info_outline),
+            leading: Icon(Icons.list_alt_outlined),
             title: Text('Yêu cầu của tôi'),
             onTap: () => {
               Navigator.push(

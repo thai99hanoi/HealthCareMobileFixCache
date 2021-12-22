@@ -115,7 +115,8 @@ class _GetAllRequestScreenState extends State<GetAllRequestScreen> {
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.green))
+                                                color: Color.fromRGBO(
+                                                    3, 99, 8, 1)))
                                         : (requestAllSnapshot
                                                     .data![index].status ==
                                                 2

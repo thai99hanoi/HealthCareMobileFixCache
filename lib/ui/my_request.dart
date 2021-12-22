@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heath_care/model/request.dart';
 import 'package:heath_care/repository/request_repository.dart';
+import 'package:intl/intl.dart';
 
 class MyRequestScreen extends StatefulWidget {
   const MyRequestScreen({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class MyRequestScreen extends StatefulWidget {
 }
 
 class _MyRequestScreenState extends State<MyRequestScreen> {
+  final df = new DateFormat('dd-MM-yyyy');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,13 +46,12 @@ class _MyRequestScreenState extends State<MyRequestScreen> {
                                   text: TextSpan(
                                     children: <TextSpan>[
                                       TextSpan(
-                                          text: 'Người yêu cầu: : ',
+                                          text: 'Ngày yêu cầu: : ',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
                                       TextSpan(
-                                          text: requestAllSnapshot
-                                              .data![index].user!
-                                              .getDisplayName()),
+                                          text: df.format(requestAllSnapshot
+                                              .data![index].date!)),
                                     ],
                                   ),
                                 ),
@@ -111,7 +112,8 @@ class _MyRequestScreenState extends State<MyRequestScreen> {
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.green))
+                                                color: Color.fromRGBO(
+                                                    3, 99, 8, 1)))
                                         : (requestAllSnapshot
                                                     .data![index].status ==
                                                 2
